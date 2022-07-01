@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BassGuitar{% endblock %}
+
+{% block body %}
+    <h1>Create new BassGuitar</h1>
+
+    {{ include('bass_guitar/_form.html.twig') }}
+
+    <a href="{{ path('app_bass_guitar_index') }}">back to list</a>
+{% endblock %}

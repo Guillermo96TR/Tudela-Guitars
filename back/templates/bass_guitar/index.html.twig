@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BassGuitar index{% endblock %}
+
+{% block body %}
+    <h1>BassGuitar index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Caracteristicas</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bass_guitar in bass_guitars %}
+            <tr>
+                <td>{{ bass_guitar.id }}</td>
+                <td>{{ bass_guitar.nombre }}</td>
+                <td>{{ bass_guitar.imagen }}</td>
+                <td>{{ bass_guitar.caracteristicas }}</td>
+                <td>
+                    <a href="{{ path('app_bass_guitar_show', {'id': bass_guitar.id}) }}">show</a>
+                    <a href="{{ path('app_bass_guitar_edit', {'id': bass_guitar.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bass_guitar_new') }}">Create new</a>
+{% endblock %}
