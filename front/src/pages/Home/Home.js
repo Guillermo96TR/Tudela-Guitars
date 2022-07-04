@@ -1,6 +1,6 @@
 function Home() {
   return(
-  <div>HOME asd</div>
+  <div>Tudela Guitars</div>
   )
 }
 export default Home;

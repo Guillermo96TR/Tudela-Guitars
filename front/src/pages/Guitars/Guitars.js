@@ -15,7 +15,7 @@ function Guitars() {
 
   return (
     <div>
-      <h2>Todas las guitarras</h2>
+      <h2>Todos nuestros modelos de guitarras</h2>
       <section>
         {Guitarras.map((guitarra) => (
           <div className="guitarras" key={guitarra.id}>

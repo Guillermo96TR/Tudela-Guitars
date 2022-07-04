@@ -20,9 +20,17 @@ class BassGuitarController extends AbstractController
      */
     public function index(BassGuitarRepository $bassGuitarRepository): Response
     {
-        return $this->render('bass_guitar/index.html.twig', [
-            'bass_guitars' => $bassGuitarRepository->findAll(),
-        ]);
+        $guitarra = $bassGuitarRepository->findAll();
+        $resultado = [];
+        foreach ($guitarra as $g) {
+            $resultado[] =  [
+                'id'=> $g->getId(),
+                'nombre' =>  $g->getNombre(),
+                'caracteristicas' => $g->getCaracteristicas(),
+                'imagen' => $g->getImagen()
+            ];
+        }
+        return $this->json(['result' => $resultado]);
     }
 
     /**

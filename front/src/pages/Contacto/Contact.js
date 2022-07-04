@@ -57,9 +57,9 @@ const Contact = () => {
             name="mensaje"
             type="text"
             onChange={handleInputChange}
-            placeholder="Deja aquí tu comentario..."
+            placeholder="Deja aquí tu mensaje y lo responderemos con la mayor brevedad posible"
           ></textarea>
-          <button type="submit">Iniciar sesión</button>
+          <button type="submit">Enviar</button>
         </form>
       </div>
     </>
