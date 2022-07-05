@@ -37,6 +37,7 @@ const Contact = () => {
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email:</label>
           <input
+           required={true}
             id="email"
             name="email"
             type="email"
@@ -45,6 +46,7 @@ const Contact = () => {
           />
           <label htmlFor="nombre">Nombre:</label>
           <input
+          required={true}
             id="nombre"
             name="nombre"
             type="text"
@@ -53,6 +55,7 @@ const Contact = () => {
           />
           <label htmlFor="mensaje">Mensaje:</label>
           <textarea
+           required={true}
             id="mensaje"
             name="mensaje"
             type="text"
