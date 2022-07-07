@@ -1,16 +1,15 @@
-
-
-
-
-body {
+@import url("https://fonts.googleapis.com/css2?family=Fredoka&family=Kaushan+Script&family=Lato:wght@300&family=Roboto:wght@100;300;400&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-image: url(/public/background.jpg);
-background-repeat: no-repeat;
-  background-size: cover;
+}
+body {
+  background-color: black;
+  /* background-image: url(/public/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
   /* background-position: center center; */
-
 }
 /* img{
   aspect-ratio;

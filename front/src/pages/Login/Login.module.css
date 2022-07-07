@@ -35,34 +35,35 @@
     .user{
       padding: 10px;
       border-radius: 8px;
-      background: #F2994A;
+      background: #fff;
     }
    .user::placeholder{
     color: black;
     font-weight: 600;
   font-size: 15px;
-  background: #F2994A;
+  background: #fff
+  ;
     }
     .password{ padding: 10px;
       border-radius: 8px;
-      background: #F2994A;
+      background: #fff;
     }
    .password::placeholder{
     color: black;
     font-weight: 600;
   font-size: 15px;
-  background: #F2994A;
+  background: #fff;
     }
   
   .boton{
-    background: #F2994A;
+    background: #fff;
     padding: 10px;
     border-radius: 8px;
     margin-left: 15px;
     }
     .boton:hover{
       font-weight: 700;
-      background: #F2994A;
+      background: whitesmoke;
     }
     .default {
       margin-bottom: 251px;

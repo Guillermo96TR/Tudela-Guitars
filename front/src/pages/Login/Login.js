@@ -43,7 +43,7 @@ const Login = () => {
             type="text"
             onChange={handleInputChange}
             value={formValues.username}
-            placeholder="Introduce tu email"
+            placeholder=""
           />
           <label className={styles.labels} htmlFor="password">Contraseña</label>
           <input className={styles.password}
@@ -53,7 +53,7 @@ const Login = () => {
             type="password"
             onChange={handleInputChange}
             values={formValues.password}
-            placeholder="Introduce tu contraseña"
+            placeholder=""
           />
           <button className={styles.boton} type="submit">Iniciar sesión</button>
           <div className={styles.links}><Link to="/register">Crea una cuenta</Link></div>

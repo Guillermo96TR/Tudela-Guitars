@@ -1,0 +1,22 @@
+.footer {
+  background-color: #DF9438;
+  padding: 0.5em 2em;
+  color: black;
+  font-family: "Lato", sans-serif;
+  font-size: 1.2rem;
+  min-height: 10vh;
+}
+
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer div {
+  height: 100%;
+}
+.footer span,
+.footer span svg {
+  margin: 0 0.1em;
+}

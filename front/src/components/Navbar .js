@@ -3,13 +3,16 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthContext";
 import { useContext } from "react";
 import "./navbar.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGuitar } from "@fortawesome/free-solid-svg-icons";
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { token } = useContext(AuthContext);
   function showSwitch() {
     return setShow(!show);
   }
-  function logout(){
+  function logout() {
     localStorage.clear();
     window.location.href = "/";
   }
@@ -17,16 +20,18 @@ const Navbar = () => {
     <>
       {!token ? (
         <div className="navbar">
-          <div className="logo">Page Tittle</div>
+          <div className="logo">
+            <em>
+              <FontAwesomeIcon icon={faGuitar} className="fa-2xl logoIcon" />{" "}
+              Tudela Guitars
+            </em>
+          </div>
           <div className={show ? "links active" : "links"}>
             <Link onClick={() => showSwitch()} to="/">
               Home
             </Link>
             <Link onClick={() => showSwitch()} to="/about">
               About
-            </Link>
-            <Link onClick={() => showSwitch()} to="/login">
-              Login/Register
             </Link>
             <Link onClick={() => showSwitch()} to="/guitars">
               Guitarras
@@ -36,6 +41,9 @@ const Navbar = () => {
             </Link>
             <Link onClick={() => showSwitch()} to="/contacto">
               Contact
+            </Link>
+            <Link onClick={() => showSwitch()} to="/login">
+              Login/Register
             </Link>
           </div>
           <div
@@ -49,16 +57,22 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="navbar">
-          <div className="logo">Page Tittle</div>
+          <div className="logo">
+            <em>
+              {" "}
+              <FontAwesomeIcon
+                icon={faGuitar}
+                className="fa-2xl logoIcon"
+              />{" "}
+              Tudela Guitars
+            </em>
+          </div>
           <div className={show ? "links active" : "links"}>
             <Link onClick={() => showSwitch()} to="/">
               Home
             </Link>
             <Link onClick={() => showSwitch()} to="/about">
               About
-            </Link>
-            <Link onClick={() => showSwitch()} to="/dashboard">
-              Panel de control
             </Link>
             <Link onClick={() => showSwitch()} to="/guitars">
               Guitarras
@@ -68,6 +82,9 @@ const Navbar = () => {
             </Link>
             <Link onClick={() => showSwitch()} to="/contacto">
               Contact
+            </Link>
+            <Link onClick={() => showSwitch()} to="/dashboard">
+              Panel de control
             </Link>
             <Link onClick={() => logout()} to="/">
               Logout
