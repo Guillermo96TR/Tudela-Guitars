@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate} from "react-router-dom";
 import { AuthContext } from "../../components/AuthContext";
-import "../Contacto/Contact.css"
+import "../Contacto/Contact.module.css"
 import swal from "sweetalert";
 const Contact = () => {
   const [formValues, setFormValues] = useState({

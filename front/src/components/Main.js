@@ -11,6 +11,7 @@ import BassGuitars from "../pages/bassguitars/bassguitars";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Team from "./Team";
+import { Dashboard } from "../pages/Dashboard/Dashboard";
 
 function Main() {
   return (
@@ -26,6 +27,7 @@ function Main() {
         <Route path="/bassguitars" element={<BassGuitars />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="404" replace />} />
       </Routes>

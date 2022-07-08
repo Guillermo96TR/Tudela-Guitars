@@ -1,0 +1,48 @@
+.dashboard {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.dashTitulo {
+  padding: 10px 0;
+  text-align: center;
+  font-size: 2em;
+}
+
+.dashTitulo a {
+  color: #fff;
+  text-decoration: none;
+}
+.dashTitulo a:hover {
+  text-decoration: underline;
+}
+
+.dashSections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
+  width: 90%;
+  margin: 0 auto;
+}
+.dashSections div {
+  width: 50%;
+  padding: 0 3%;
+  text-align: center;
+}
+.dashSections div a {
+  color: #fff;
+  text-decoration: none;
+}
+.dashSections div img {
+    width: 100%;
+    height: auto;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 4/6;
+}
+
+.dashSections div h2 {
+  font-size: 2em;
+  color: #fff;
+}

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../bassguitars/bassguitars.css";
-function BassGuitars() {
+import bassGuitar from "./bassguitars.module.css"
+export default function BassGuitars() {
   const [Bajos, setBajos] = useState([]);
   useEffect(() => {
     fetch("http://127.0.0.1:8080/bass/guitar", {
@@ -16,13 +16,13 @@ function BassGuitars() {
   return (
     <div>
       <h2>Todos los bajos</h2>
-      <section>
+      <section className={bassGuitar.sectionBassGuitar}>
         {Bajos.map((bajo) => (
-          <div className="bajos" key={bajo.id}>
+          <div className={bassGuitar.bajos} key={bajo.id}>
             <div>{bajo.nombre}</div>
             <div>{bajo.caracteristicas}</div>
-            <div className="images">
-              <img src={`./images/${bajo.imagen}`} />
+            <div className={bassGuitar.images}>
+              <img src={`./images/${bajo.imagen}`} alt="images bass guitar" />
             </div>
           </div>
         ))}
@@ -30,4 +30,3 @@ function BassGuitars() {
     </div>
   );
 }
-export default BassGuitars;

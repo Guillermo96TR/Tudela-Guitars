@@ -15,7 +15,7 @@ const Register = () => {
 //Petition to server.
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://127.0.0.1:8080/user/new", {
+    fetch("http://localhost/user/new", {
       method: "POST",
       body: JSON.stringify(formValues),
       headers: {
@@ -58,11 +58,12 @@ const Register = () => {
             values={formValues.password}
           />
           <button className={styles.boton} type="submit"> Crear cuenta</button>
-          <div className={styles.links}><Link to="/login"> Logear
-          </Link></div>
+          {/* <div className={styles.links}><Link to="/login"> Logear */}
+          {/* </Link></div> */}
         </form>
       </div>
     </>
   );
 };
 export default Register;
+

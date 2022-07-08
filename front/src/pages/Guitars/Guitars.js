@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../Guitars/Guitars.css";
-function Guitars() {
+import guitars from "./Guitars.module.css";
+export default function Guitars() {
   const [Guitarras, setGuitarras] = useState([]);
   useEffect(() => {
     fetch("http://127.0.0.1:8080/guitars", {
@@ -16,13 +16,13 @@ function Guitars() {
   return (
     <div>
       <h2>Todos nuestros modelos de guitarras</h2>
-      <section>
+      <section className={guitars.sectionGuitar}>
         {Guitarras.map((guitarra) => (
-          <div className="guitarras" key={guitarra.id}>
+          <div className={guitars.guitarras} key={guitarra.id}>
             <div>{guitarra.nombre}</div>
             <div>{guitarra.caracteristicas}</div>
-            <div className="images">
-              <img src={`./images/${guitarra.imagen}`} />
+            <div className={guitars.images}>
+              <img src={`./images/${guitarra.imagen}`}  alt="images guitar" />
             </div>
           </div>
         ))}
@@ -30,4 +30,3 @@ function Guitars() {
     </div>
   );
 }
-export default Guitars;

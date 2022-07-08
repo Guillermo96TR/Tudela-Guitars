@@ -9,14 +9,17 @@
   flex-wrap: wrap;
 }
 .persona {
-    width: 23%;
+  width: 23%;
   margin: 10px 5%;
+}
+.personal {
+  margin-bottom: 1.5em;
 }
 
 .personal img {
-object-fit: cover;
-object-position: center;
-aspect-ratio: 4/5;
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 4/5;
 }
 .danny {
   width: 25%;
@@ -27,15 +30,51 @@ aspect-ratio: 4/5;
 }
 .cargos {
   /* margin-left: -50px; */
-  width: 100px;
+  width: 100%;
   height: 100px;
   background-color: gray;
   border: solid 1px white;
-
+  padding: 0.5em;
+  margin-bottom: 1.5em;
+  font-family: 'lato';
+  font-size: medium;
 }
-.history{
+.cargos h3,
+h4 {
+  padding: 1em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+/* .puesto {
+
+  align-items: top;
+} */
+/* .cargos h4 {
+padding-top: -0.5em;
+
+} */
+
+.history {
   width: 60%;
   height: 60vh;
-border: 1px solid white;
-;
+  border: 1px solid white;
+  font-family: "Roboto", sans-serif;
+  /* margin-top: 20%; */
+  padding: 5em;
+  width: 80%;
+  height: 25%;
+  margin-top: 10em;
+  font-size: 1.3em;
+}
+.eslogan {
+  margin: 10em;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+}
+.eslogan h2 {
+  justify-content: center;
+  align-items: center;
+  padding-left: 25em;
+  font-family: "Kaushan Script", cursive;
 }

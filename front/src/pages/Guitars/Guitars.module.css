@@ -1,0 +1,21 @@
+.images img {
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 4/4;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  margin-top: 3px;
+}
+.sectionGuitar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.guitarras{
+    margin-left: 10px;
+    width: 23%;
+}
+

@@ -13,7 +13,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/user")
+ * @Route("/api/user")
  */
 class UserController extends AbstractController
 {
@@ -22,13 +22,18 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+
+        $result='ok';
+        return $this->json([
+            'result' => $result
         ]);
+        // return $this->render('user/index.html.twig', [
+        //     'users' => $userRepository->findAll(),
+        // ]);
     }
 
     /**
-     * @Route("/new", name="app_user_new", methods={"GET", "POST"})
+     * @Route("/new", name="app_user_new", methods={"POST"})
      */
     public function new(Request $request,UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $em): Response
     {
@@ -41,7 +46,6 @@ class UserController extends AbstractController
             $hasherpassword = $userPasswordHasher -> hashPassword(
                 $user,$data ["password"]
             );
-            
 
             $user->setPassword($hasherpassword);
 
@@ -62,10 +66,22 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="app_user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user, UserRepository $userRepository, $id): Response
     {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
+        $resultado=[];
+
+        $userInfo= $userRepository->find($id);
+        
+        if(!empty($userInfo->getId()))
+        {
+            $resultado[]=[
+                'id'=>$userInfo->getId(),
+                'username'=>$userInfo->getUserIdentifier()
+            ];
+        }
+
+        return $this->json([
+            'resultado' => $resultado
         ]);
     }
 

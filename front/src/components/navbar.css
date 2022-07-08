@@ -68,7 +68,7 @@
   transition: all 0.8s ease;
 }
 .links a:hover {
-  color: rgb(108, 61, 61);
+  color: #7f5539;
   z-index: 1;
   transition: all 0.8s ease;
 }
@@ -97,7 +97,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgb(108, 61, 61);
+    background-color: #7f5539;
     align-items: center;
     justify-content: center;
   }
