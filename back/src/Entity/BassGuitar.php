@@ -32,6 +32,11 @@ class BassGuitar
      */
     private $caracteristicas;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="bassGuitars")
+     */
+    private $users;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class BassGuitar
     public function setCaracteristicas(string $caracteristicas): self
     {
         $this->caracteristicas = $caracteristicas;
+
+        return $this;
+    }
+
+    public function getUsers(): ?User
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?User $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }

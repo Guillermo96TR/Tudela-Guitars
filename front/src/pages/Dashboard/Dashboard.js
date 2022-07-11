@@ -1,28 +1,47 @@
-import { Link } from "react-router-dom";
-import styleDashboard from "./Dashboard.module.css";
-import imageGuitar from "../../assets/images/imagen.jpg";
-import imageBassGuitar from "../../assets/images/imagen4.jpg";
+import { useEffect, useState } from "react";
+import styles from "./Dashboard.module.css";
+import { useNavigate } from "react-router";
+export function Dashboard() {
+  const [user, setUser] = useState();
+const navigate = useNavigate();
+// Fetch para obtener información del usuario actual y comprobarlo con el TOKEN.
+  useEffect(() => {
+    fetch("http://localhost:8080/user/get", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+          setUser(data.result);
+        }
+      );
+  }, []);
 
-export function Dashboard(){
-
-    //fetch(`http://localhost:8080/api/user/`)
-
-
-    return (
-        <section className={styleDashboard.dashboard}>
-            <div className={styleDashboard.dashTitulo}><Link to={`/profile`}>Ver perfil</Link></div>
-            <div className={styleDashboard.dashSections}>
-                <div>
-                    <Link to={`/my-guitars`}>
-                    <img src={imageGuitar} alt='imagen Guitarra' width="300px" height="300px" />
-                    <h2>Mis guitarras</h2>
-                    </Link>
-                </div>
-                <div>
-                    <img src={imageBassGuitar} alt='imagen Bajos' width="300px" height="300px" />
-                    <h2>Mis bajos</h2>
-                </div>
-            </div>
+  //console.log(user.publicaciones);
+  return (
+    // Condicional, si hay usuario pintamos y si no, no.
+    <>
+      {user ? ( <div>
+          <h1 className={styles.welcome}>Welcome {user.nombre} to your dashboard</h1>
+        <section className={styles.box}>
+        <div className={styles.box}>
+          <div className={styles.user}  key={user.id}>
+              <div className={styles.imgas}><img  src={user.perfil} /></div>
+              <button className={styles.boton} onClick={()=>{
+                navigate(`/edituser/${user.id}`, { replace: true })
+              }} > Change info</button></div>
+            <button className={styles.boton1} onClick={()=>{
+                navigate("/userposts", { replace: true })
+              }} > My posts</button>
+        </div>
         </section>
-    );
+        </div>
+      ) : (
+        <div>
+          loading
+        </div>
+      )}
+    </>
+  );
 }

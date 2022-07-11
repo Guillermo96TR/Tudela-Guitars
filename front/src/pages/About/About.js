@@ -2,6 +2,7 @@ import classes from "./about.module.css";
 function About() {
   return (
     <div class={classes.equipo}>
+      <h2>About us</h2>
       <div className={classes.history}>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quae
         architecto culpa ex sunt veritatis quo illo, quasi nemo! Nulla quaerat,

@@ -24,7 +24,7 @@ class GuitarsController extends AbstractController
         $resultado = [];
         foreach ($guitarra as $g) {
             $resultado[] =  [
-                'id'=> $g->getId(),
+                'id' => $g->getId(),
                 'nombre' =>  $g->getNombre(),
                 'caracteristicas' => $g->getCaracteristicas(),
                 'imagen' => $g->getImagen()
@@ -59,9 +59,13 @@ class GuitarsController extends AbstractController
      */
     public function show(Guitars $guitar): Response
     {
-        return $this->render('guitars/show.html.twig', [
-            'guitar' => $guitar,
-        ]);
+        $resultado = [
+            'nombre' => $guitar->getNombre(),
+            'caracteristicas' =>  $guitar->getCaracteristicas(),
+            'precio' => $guitar->getPrice(),
+            'imagen' => $guitar->getImagen()
+        ];
+        return $this->json(['result' => $resultado]);
     }
 
     /**

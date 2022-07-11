@@ -1,0 +1,19 @@
+.Home {
+  display: flex;
+  /* flex-direction: ; */
+  justify-items: center;
+  color: white;
+  flex-wrap: nowrap;
+}
+
+.homephoto {
+  width: 25%;
+  margin: 10px 9%;
+  border: 1px solid white;
+}
+.motivationalspace{
+  width: 22%;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}

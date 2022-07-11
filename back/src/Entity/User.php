@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -34,6 +36,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $avatar;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Guitars::class, mappedBy="users")
+     */
+    private $guitars;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BassGuitar::class, mappedBy="users")
+     */
+    private $bassGuitars;
+
+    public function __construct()
+    {
+        $this->guitars = new ArrayCollection();
+        $this->bassGuitars = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,5 +140,77 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): self
+    {
+        $this->avatar = $avatar;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Guitars>
+     */
+    public function getGuitars(): Collection
+    {
+        return $this->guitars;
+    }
+
+    public function addGuitar(Guitars $guitar): self
+    {
+        if (!$this->guitars->contains($guitar)) {
+            $this->guitars[] = $guitar;
+            $guitar->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGuitar(Guitars $guitar): self
+    {
+        if ($this->guitars->removeElement($guitar)) {
+            // set the owning side to null (unless already changed)
+            if ($guitar->getUsers() === $this) {
+                $guitar->setUsers(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, BassGuitar>
+     */
+    public function getBassGuitars(): Collection
+    {
+        return $this->bassGuitars;
+    }
+
+    public function addBassGuitar(BassGuitar $bassGuitar): self
+    {
+        if (!$this->bassGuitars->contains($bassGuitar)) {
+            $this->bassGuitars[] = $bassGuitar;
+            $bassGuitar->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBassGuitar(BassGuitar $bassGuitar): self
+    {
+        if ($this->bassGuitars->removeElement($bassGuitar)) {
+            // set the owning side to null (unless already changed)
+            if ($bassGuitar->getUsers() === $this) {
+                $bassGuitar->setUsers(null);
+            }
+        }
+
+        return $this;
     }
 }

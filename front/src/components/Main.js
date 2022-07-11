@@ -6,32 +6,37 @@ import Home from "../pages/Home/Home";
 import About from "../pages/About/About";
 import Guitars from "../pages/Guitars/Guitars";
 import Contact from "../pages/Contacto/Contact";
+import Guitar from "../pages/Guitars/Guitar";
 import Enviado from "../pages/Enviado/Enviado";
 import BassGuitars from "../pages/bassguitars/bassguitars";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Team from "./Team";
 import { Dashboard } from "../pages/Dashboard/Dashboard";
-
+import BassGuitar from "../pages/bassguitars/bassguitar";
 function Main() {
   return (
     <main className={classes.main}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-
-        <Route path="/guitars" element={<Guitars />} />
+        <Route path="/guitars">
+          <Route index element={<Guitars />} />
+          <Route path=":id" element={<Guitar />} />
+        </Route>
+        <Route path="/bassguitars">
+        <Route path="/bassguitars" element={<BassGuitars />} />
+          <Route path=":id" element={< BassGuitar/>} />
+        </Route>
         <Route path="/contacto" element={<Contact />} />
         <Route path="/enviado" element={<Enviado />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/bassguitars" element={<BassGuitars />} />
         <Route path="/contacto" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="*" element={<Navigate to="404" replace />} />
       </Routes>
-
     </main>
   );
 }

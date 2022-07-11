@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import guitars from "./Guitars.module.css";
+import {Link} from "react-router-dom";
 export default function Guitars() {
   const [Guitarras, setGuitarras] = useState([]);
   useEffect(() => {
@@ -15,14 +16,15 @@ export default function Guitars() {
 
   return (
     <div>
-      <h2>Todos nuestros modelos de guitarras</h2>
+      <h2 className={guitars.tituloprincipal}>Todos nuestros modelos de guitarras</h2>
       <section className={guitars.sectionGuitar}>
         {Guitarras.map((guitarra) => (
           <div className={guitars.guitarras} key={guitarra.id}>
-            <div>{guitarra.nombre}</div>
-            <div>{guitarra.caracteristicas}</div>
+            <div className={guitars.nombre}>{guitarra.nombre}</div>
             <div className={guitars.images}>
-              <img src={`./images/${guitarra.imagen}`}  alt="images guitar" />
+            <Link to={`/guitars/${guitarra.id}`}>
+                  <img src={`./images/${guitarra.imagen}`} />
+                </Link>
             </div>
           </div>
         ))}

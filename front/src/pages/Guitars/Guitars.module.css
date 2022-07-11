@@ -1,4 +1,5 @@
 .images img {
+  border-radius: 2%;
   object-fit: cover;
   object-position: center;
   aspect-ratio: 4/4;
@@ -7,15 +8,67 @@
 img {
   width: 100%;
   height: auto;
-  margin-top: 3px;
+
+}
+.tituloprincipal{
+  margin-bottom: 3rem;
 }
 .sectionGuitar {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .guitarras{
-    margin-left: 10px;
-    width: 23%;
+    /* margin-left: 10px;
+    width: 23%; */
+    width: 30%;
+    margin: 10px 2%;
+    text-align: center;
+    color: black;
+    margin-bottom: 60px;
+}
+
+.section1Guitar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.box{
+  width: 25%;
+}
+
+.link{
+  text-decoration: none;
+  color: white;
+  font-size: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.link:hover{
+  color: grey;
+  transition: all 0.4s ease-in;
+}
+.caracteristicas{
+  color: white;
+  font-size: 1.5rem;
+}
+.nombre{
+  margin-top: 25px;
+  font-size: 31px;
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+.precio{
+  color: white;
+  font-size: 2rem;
+}
+h2{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
 }
 

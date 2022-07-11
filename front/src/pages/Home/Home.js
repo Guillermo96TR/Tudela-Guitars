@@ -1,13 +1,14 @@
-// import styles from "../Home/home.module.css";
-// no importa estilos corregir error
+import style from "./Home.module.css"
 
 function Home() {
   return (
-    <div className="Home">
-      <div className="homephoto">
+  <>
+  <h1>Welcome</h1>
+    <div className={style.Home}>
+            <div className={style.homephoto}>
         <img src="./images/pibe.jpg"></img>
       </div>
-      <div className="motivationalspace">
+      <div className={style.motivationalspace}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab itaque, est
         rerum temporibus assumenda vitae accusantium cum nulla, placeat
         molestiae voluptate illum quia sunt exercitationem obcaecati vel cumque,
@@ -27,10 +28,10 @@ function Home() {
         Porro doloremque placeat eos minus ab, temporibus ratione sint
         veritatis?
       </div>
-      <div className="homephoto">
+      <div className={style.homephoto}>
         <img src="./images/piba.jpg"></img>
       </div>
-    </div>
+    </div></>
   );
 }
 export default Home;

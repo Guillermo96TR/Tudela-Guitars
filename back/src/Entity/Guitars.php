@@ -32,6 +32,16 @@ class Guitars
      */
     private $caracteristicas;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $price;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="guitars")
+     */
+    private $users;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +79,30 @@ class Guitars
     public function setCaracteristicas(string $caracteristicas): self
     {
         $this->caracteristicas = $caracteristicas;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getUsers(): ?User
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?User $users): self
+    {
+        $this->users = $users;
 
         return $this;
     }
