@@ -6,7 +6,7 @@ export default function Guitar() {
   const { id } = useParams();
   const [Guitarra, setGuitarra] = useState([]);
   useEffect(() => {
-    fetch(`http://127.0.0.1:8080/guitars/${id}`, {
+    fetch(`http://localhost:8080/guitars/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,8 +27,8 @@ export default function Guitar() {
             <div className={guitars.box}>
               <div className={guitars.nombre}>{Guitarra.nombre}</div>
               <br></br>
-              <div div className={guitars.images}>
-                <img src={`../images/${Guitarra.imagen}`} />
+              <div className={guitars.images}>
+                <img src={Guitarra.imagen} />
               </div>
               <div className={guitars.caracteristicas}>
                 {Guitarra.caracteristicas}

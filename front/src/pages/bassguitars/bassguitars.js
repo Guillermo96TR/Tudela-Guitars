@@ -23,7 +23,7 @@ export default function BassGuitars() {
             <div className={guitars.nombre}>{guitarra.nombre}</div>
             <div className={guitars.images}>
             <Link to={`/bassguitars/${guitarra.id}`}>
-                  <img src={`./images/${guitarra.imagen}`} />
+                  <img src={guitarra.imagen}/>
                 </Link>
             </div>
           </div>

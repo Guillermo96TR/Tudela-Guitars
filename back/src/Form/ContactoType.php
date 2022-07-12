@@ -14,7 +14,7 @@ class ContactoType extends AbstractType
         $builder
             ->add('nombre')
             ->add('mensaje')
-            ->add('email')
+            ->add('usuario')
         ;
     }
 

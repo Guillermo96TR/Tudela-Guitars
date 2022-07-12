@@ -6,7 +6,7 @@ export default function BassGuitar() {
   const { id } = useParams();
   const [Bajo, setBajo] = useState([]);
   useEffect(() => {
-    fetch(`http://127.0.0.1:8080/bassguitars/${id}`, {
+    fetch(`http://localhost:8080/bass/guitar/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export default function BassGuitar() {
               <div className={bassguitars.nombre}>{Bajo.nombre}</div>
               <br></br>
               <div className={bassguitars.images}>
-              <img src={`../images/${Bajo.imagen}`} />
+              <img src={Bajo.imagen} />
               </div>
               <div className={bassguitars.caracteristicas}>
                 {Bajo.caracteristicas}

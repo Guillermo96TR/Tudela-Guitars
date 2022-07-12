@@ -13,8 +13,10 @@ class GuitarsType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('imagen')
             ->add('caracteristicas')
+            ->add('price')
+            ->add('imagen')
+            ->add('usuarios')
         ;
     }
 

@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { useNavigate} from "react-router-dom";
 import { AuthContext } from "../../components/AuthContext";
-import "../Contacto/Contact.module.css"
+import styles from "../Contacto/Contact.module.css"
+
 import swal from "sweetalert";
 const Contact = () => {
   const [formValues, setFormValues] = useState({
@@ -15,7 +16,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://127.0.0.1:8080/contacto/new", {
+    fetch("http://127.0.0.1:8080/api/contacto/new", {
       method: "POST",
       body: JSON.stringify(formValues),
       headers: {

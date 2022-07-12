@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 export default function Guitars() {
   const [Guitarras, setGuitarras] = useState([]);
   useEffect(() => {
-    fetch("http://127.0.0.1:8080/guitars", {
+    fetch("http://localhost:8080/guitars", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -16,14 +16,14 @@ export default function Guitars() {
 
   return (
     <div>
-      <h2 className={guitars.tituloprincipal}>Todos nuestros modelos de guitarras</h2>
+      <h2 className={guitars.tituloprincipal}>Guitarras disponibles</h2>
       <section className={guitars.sectionGuitar}>
         {Guitarras.map((guitarra) => (
           <div className={guitars.guitarras} key={guitarra.id}>
             <div className={guitars.nombre}>{guitarra.nombre}</div>
             <div className={guitars.images}>
             <Link to={`/guitars/${guitarra.id}`}>
-                  <img src={`./images/${guitarra.imagen}`} />
+                  <img src={guitarra.imagen} />
                 </Link>
             </div>
           </div>

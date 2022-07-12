@@ -45,6 +45,7 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  font-family: 'Lato', sans-serif;
 }
 .link:hover{
   color: grey;
@@ -53,6 +54,7 @@ img {
 .caracteristicas{
   color: white;
   font-size: 1.5rem;
+  font-family: 'Lato', sans-serif;
 }
 .nombre{
   margin-top: 25px;
@@ -60,10 +62,12 @@ img {
   text-align: center;
   color: white;
   margin-bottom: 20px;
+  font-family: "Kaushan Script", cursive;
 }
 .precio{
   color: white;
   font-size: 2rem;
+  font-family: 'Lato', sans-serif;
 }
 h2{
   display: flex;
@@ -72,3 +76,7 @@ h2{
   font-size: 2rem;
 }
 
+.tituloprincipal{
+  justify-content: center;
+  font-family: "Kaushan Script", cursive;
+}

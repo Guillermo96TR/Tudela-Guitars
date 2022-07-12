@@ -6,7 +6,7 @@ export function Dashboard() {
 const navigate = useNavigate();
 // Fetch para obtener información del usuario actual y comprobarlo con el TOKEN.
   useEffect(() => {
-    fetch("http://localhost:8080/user/get", {
+    fetch("http://localhost:8080/api/usuario/get", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
@@ -22,7 +22,7 @@ const navigate = useNavigate();
   return (
     // Condicional, si hay usuario pintamos y si no, no.
     <>
-      {user ? ( <div>
+      {user ? ( <div className={styles.all}>
           <h1 className={styles.welcome}>Welcome {user.nombre} to your dashboard</h1>
         <section className={styles.box}>
         <div className={styles.box}>
@@ -32,8 +32,8 @@ const navigate = useNavigate();
                 navigate(`/edituser/${user.id}`, { replace: true })
               }} > Change info</button></div>
             <button className={styles.boton1} onClick={()=>{
-                navigate("/userposts", { replace: true })
-              }} > My posts</button>
+                navigate("/userguitars", { replace: true })
+              }} > My products</button>
         </div>
         </section>
         </div>

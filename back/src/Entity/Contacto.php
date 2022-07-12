@@ -28,6 +28,11 @@ class Contacto
     private $mensaje;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Usuario::class, inversedBy="Formularios")
+     */
+    private $usuario;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $email;
@@ -57,6 +62,18 @@ class Contacto
     public function setMensaje(string $mensaje): self
     {
         $this->mensaje = $mensaje;
+
+        return $this;
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(?Usuario $usuario): self
+    {
+        $this->usuario = $usuario;
 
         return $this;
     }

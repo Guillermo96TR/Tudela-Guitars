@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
 
-{% block title %}BassGuitar{% endblock %}
+<title>BassGuitar</title>
 
 {% block body %}
     <h1>BassGuitar</h1>
@@ -16,12 +16,16 @@
                 <td>{{ bass_guitar.nombre }}</td>
             </tr>
             <tr>
+                <th>Caracteristicas</th>
+                <td>{{ bass_guitar.caracteristicas }}</td>
+            </tr>
+            <tr>
                 <th>Imagen</th>
                 <td>{{ bass_guitar.imagen }}</td>
             </tr>
             <tr>
-                <th>Caracteristicas</th>
-                <td>{{ bass_guitar.caracteristicas }}</td>
+                <th>Price</th>
+                <td>{{ bass_guitar.price }}</td>
             </tr>
         </tbody>
     </table>

@@ -12,6 +12,8 @@ img {
 }
 .tituloprincipal{
   margin-bottom: 3rem;
+  font-family: "Kaushan Script", cursive;
+  justify-content: center;
 }
 .sectionGuitar {
   display: flex;
@@ -45,6 +47,7 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  font-family: 'Lato', sans-serif;
 }
 .link:hover{
   color: grey;
@@ -60,10 +63,12 @@ img {
   text-align: center;
   color: white;
   margin-bottom: 20px;
+  font-family: "Kaushan Script", cursive;
 }
 .precio{
   color: white;
   font-size: 2rem;
+  font-family: 'Lato', sans-serif;
 }
 h2{
   display: flex;

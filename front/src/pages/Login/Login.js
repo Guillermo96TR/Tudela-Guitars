@@ -14,7 +14,7 @@ const Login = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://127.0.0.1:8080/api/login_check", {
+    fetch("http://localhost:8080/api/login_check", {
       method: "POST",
       body: JSON.stringify(formValues),
       headers: {
@@ -50,7 +50,7 @@ const Login = () => {
             required={true}
             id="username"
             name="username"
-            type="text"
+            type="email"
             onChange={handleInputChange}
             value={formValues.username}
             placeholder=""

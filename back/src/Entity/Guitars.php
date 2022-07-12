@@ -25,11 +25,6 @@ class Guitars
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $imagen;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $caracteristicas;
 
     /**
@@ -38,9 +33,14 @@ class Guitars
     private $price;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="guitars")
+     * @ORM\ManyToOne(targetEntity=Usuario::class, inversedBy="guitars")
      */
-    private $users;
+    private $usuarios;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $imagen;
 
     public function getId(): ?int
     {
@@ -55,18 +55,6 @@ class Guitars
     public function setNombre(string $nombre): self
     {
         $this->nombre = $nombre;
-
-        return $this;
-    }
-
-    public function getImagen(): ?string
-    {
-        return $this->imagen;
-    }
-
-    public function setImagen(string $imagen): self
-    {
-        $this->imagen = $imagen;
 
         return $this;
     }
@@ -95,14 +83,26 @@ class Guitars
         return $this;
     }
 
-    public function getUsers(): ?User
+    public function getUsuarios(): ?Usuario
     {
-        return $this->users;
+        return $this->usuarios;
     }
 
-    public function setUsers(?User $users): self
+    public function setUsuarios(?Usuario $usuarios): self
     {
-        $this->users = $users;
+        $this->usuarios = $usuarios;
+
+        return $this;
+    }
+
+    public function getImagen(): ?string
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen(string $imagen): self
+    {
+        $this->imagen = $imagen;
 
         return $this;
     }

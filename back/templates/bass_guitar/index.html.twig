@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
 
-{% block title %}BassGuitar index{% endblock %}
+<title>BassGuitar index</title>
 
 {% block body %}
     <h1>BassGuitar index</h1>
@@ -10,8 +10,9 @@
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
-                <th>Imagen</th>
                 <th>Caracteristicas</th>
+                <th>Imagen</th>
+                <th>Price</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,8 +21,9 @@
             <tr>
                 <td>{{ bass_guitar.id }}</td>
                 <td>{{ bass_guitar.nombre }}</td>
-                <td>{{ bass_guitar.imagen }}</td>
                 <td>{{ bass_guitar.caracteristicas }}</td>
+                <td>{{ bass_guitar.imagen }}</td>
+                <td>{{ bass_guitar.price }}</td>
                 <td>
                     <a href="{{ path('app_bass_guitar_show', {'id': bass_guitar.id}) }}">show</a>
                     <a href="{{ path('app_bass_guitar_edit', {'id': bass_guitar.id}) }}">edit</a>
@@ -29,7 +31,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

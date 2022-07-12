@@ -13,8 +13,10 @@ class BassGuitarType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('imagen')
             ->add('caracteristicas')
+            ->add('imagen')
+            ->add('price')
+            ->add('usuario')
         ;
     }
 

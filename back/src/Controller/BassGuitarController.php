@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\BassGuitar;
 use App\Form\BassGuitarType;
 use App\Repository\BassGuitarRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,14 +21,16 @@ class BassGuitarController extends AbstractController
      */
     public function index(BassGuitarRepository $bassGuitarRepository): Response
     {
+
         $guitarra = $bassGuitarRepository->findAll();
         $resultado = [];
         foreach ($guitarra as $g) {
+            $imagenBajo = 'http://localhost:8080/uploads/' . $g->getImagen();
             $resultado[] =  [
-                'id'=> $g->getId(),
+                'id' => $g->getId(),
                 'nombre' =>  $g->getNombre(),
                 'caracteristicas' => $g->getCaracteristicas(),
-                'imagen' => $g->getImagen()
+                'imagen' => $imagenBajo
             ];
         }
         return $this->json(['result' => $resultado]);
@@ -36,21 +39,44 @@ class BassGuitarController extends AbstractController
     /**
      * @Route("/new", name="app_bass_guitar_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, BassGuitarRepository $bassGuitarRepository): Response
+    public function new(Request $request, EntityManagerInterface $em, BassGuitarRepository $bassGuitarRepository): Response
     {
-        $bassGuitar = new BassGuitar();
-        $form = $this->createForm(BassGuitarType::class, $bassGuitar);
-        $form->handleRequest($request);
+        /** @var User $user */
+        $usuario = $this->getUser();
+        $resultado = "ko";
+        $guitarNombre = $request->request->get("nombre");
+        $guitarCaracteristicas = $request->request->get("caracteristicas");
+        $guitarPrecio = $request->request->get("precio");
+        $imagen = $request->files->get('imagen');
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $bassGuitarRepository->add($bassGuitar, true);
+        if (!empty($guitarNombre)) {
+            $nombreImagen = '';
+            if (!empty($imagen)) {
+                if (!empty($imagen->getClientOriginalName())) {
+                    $nombreImagen = uniqid() . '_' . strtolower(trim(preg_replace('/[^A-Za-z.]+/', '-', $imagen->getClientOriginalName())));
+                    $imagen->move('uploads/', $nombreImagen);
+                }
+            }
+            // Aquí creamos la publicación, con la información introducida
+            // Por el usuario.
 
-            return $this->redirectToRoute('app_bass_guitar_index', [], Response::HTTP_SEE_OTHER);
+            $bassguitar = new BassGuitar();
+
+            // Obtenemos toda la información dada por el usuario y 
+            // la introducimos en la publicación.
+
+            $bassguitar->setUsuario($usuario);
+            $bassguitar->setNombre($guitarNombre);
+            $bassguitar->setCaracteristicas($guitarCaracteristicas);
+            $bassguitar->setPrice($guitarPrecio);
+            $bassguitar->setImagen($nombreImagen);
+
+            $em->persist($bassguitar);
+            $em->flush();
         }
-
-        return $this->renderForm('bass_guitar/new.html.twig', [
-            'bass_guitar' => $bassGuitar,
-            'form' => $form,
+        //Aquí lo retornamos com "result", Toda la información.
+        return $this->json([
+            'result' => $resultado
         ]);
     }
 
@@ -59,40 +85,71 @@ class BassGuitarController extends AbstractController
      */
     public function show(BassGuitar $bassGuitar): Response
     {
-        return $this->render('bass_guitar/show.html.twig', [
-            'bass_guitar' => $bassGuitar,
-        ]);
+        $imagenBajo = 'http://localhost:8080/uploads/' . $bassGuitar->getImagen();
+        $resultado = [
+            'nombre' => $bassGuitar->getNombre(),
+            'caracteristicas' =>  $bassGuitar->getCaracteristicas(),
+            'precio' => $bassGuitar->getPrice(),
+            'imagen' => $imagenBajo
+        ];
+        return $this->json(['result' => $resultado]);
     }
 
     /**
      * @Route("/{id}/edit", name="app_bass_guitar_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, BassGuitar $bassGuitar, BassGuitarRepository $bassGuitarRepository): Response
+    public function edit(Request $request, EntityManagerInterface $em, BassGuitar $bassGuitar, BassGuitarRepository $bassGuitarRepository): Response
     {
-        $form = $this->createForm(BassGuitarType::class, $bassGuitar);
-        $form->handleRequest($request);
+        $resultado = "ko";
+        $guitarNombre = $request->request->get("nombre");
+        $guitarCaracteristicas = $request->request->get("caracteristicas");
+        $guitarPrecio = $request->request->get("precio");
+        $imagen = $request->files->get('imagen');
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $bassGuitarRepository->add($bassGuitar, true);
+        // Si el título no está vacío al hacer el Edit de la publicación,
+        // Entonces hacemos el fetch y cambiamos la información de  la 
+        // publicación.
 
-            return $this->redirectToRoute('app_bass_guitar_index', [], Response::HTTP_SEE_OTHER);
+        if (!empty($publicacionTitulo)) {
+            $nombreImagen = '';
+            if (!empty($imagen)) {
+                if (!empty($imagen->getClientOriginalName())) {
+                    $nombreImagen = uniqid() . '_' . strtolower(trim(preg_replace('/[^A-Za-z.]+/', '-', $imagen->getClientOriginalName())));
+                    $imagen->move('uploads/', $nombreImagen);
+                }
+            }
+            // Aquí obtenemos la información del formnulario y la introducimos
+            // en la publicación, si algun campo no es modificado, se queda como está.
+
+
+            $bassGuitar->setNombre($guitarNombre);
+            $bassGuitar->setCaracteristicas($guitarCaracteristicas);
+            $bassGuitar->setPrice($guitarPrecio);
+            $bassGuitar->setImagen($nombreImagen);
+
+            $em->persist($bassGuitar);
+            $em->flush();
         }
-
-        return $this->renderForm('bass_guitar/edit.html.twig', [
-            'bass_guitar' => $bassGuitar,
-            'form' => $form,
+        return $this->json([
+            'resultado' => $resultado
         ]);
     }
 
     /**
-     * @Route("/{id}", name="app_bass_guitar_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="app_bass_guitar_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, BassGuitar $bassGuitar, BassGuitarRepository $bassGuitarRepository): Response
+    public function delete(Request $request, EntityManagerInterface $em, BassGuitar $bassGuitar, $id, BassGuitarRepository $bassGuitarRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$bassGuitar->getId(), $request->request->get('_token'))) {
-            $bassGuitarRepository->remove($bassGuitar, true);
+        $resultado = "ko";
+        if (!empty($id)) {
+            $bassGuitar = $bassGuitarRepository->find($id);
+            $em->remove($bassGuitar);
+            $em->flush();
+            $resultado = "ok";
         }
 
-        return $this->redirectToRoute('app_bass_guitar_index', [], Response::HTTP_SEE_OTHER);
+        return $this->json([
+            'result' => $resultado,
+        ]);
     }
 }
