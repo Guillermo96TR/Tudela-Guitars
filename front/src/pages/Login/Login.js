@@ -43,7 +43,7 @@ const Login = () => {
       <div className={styles.login}>
         <form className={styles.contactform} onSubmit={handleSubmit}>
           <label className={styles.labels} htmlFor="username">
-            Username
+            Email
           </label>
           <input
             className={styles.user}
