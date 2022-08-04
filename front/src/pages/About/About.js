@@ -36,7 +36,7 @@ function About() {
           </div>
           <div className={classes.cargos}>
             <h3 className={classes.nombre}>Erika West</h3>
-            {/* <h4 className={classes.puesto}>Employee</h4> */}
+            {/* <h1 className={classes.puesto}>Employee</h1> */}
           </div>
         </div>
 

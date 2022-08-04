@@ -7,10 +7,17 @@
 }
 
 .homephoto {
+  height: auto;
   width: 25%;
   margin: 10px 9%;
   border: 1px solid white;
 }
+.homephoto img {
+  height:100%;
+  width:100%;
+}
+
+
 .motivationalspace{
   width: 22%;
   margin-top: 3rem;

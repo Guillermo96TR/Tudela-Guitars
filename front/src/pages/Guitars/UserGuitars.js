@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {  useNavigate } from "react-router";
+import "./Publicaciones.css";
+
 export function UserGuitars() {
   const [user, setUser] = useState();
   const navigate = useNavigate();
@@ -24,8 +26,8 @@ export function UserGuitars() {
     // si hay usuario, pintamos publicaciones de ese usuario.
     <>
       {user ? ( 
-        <div>
-          <h2>All your Guitars, {user.nombre}</h2>
+        <div className="usuarioguitarras">
+          <h2>Tus guitarras, {user.nombre}</h2>
         <section className="seccion">
           {user.guitars.map((guitar) => (
             <div className="publicaciones" key={guitar.id}>
@@ -39,7 +41,7 @@ export function UserGuitars() {
                     {/*  Botón para EDITAR publicacion.*/}
               <button className="button1"onClick={()=>{
                 navigate(`/edituserguitars/${guitar.id}`, { replace: true })
-              }} > Edit</button>
+              }} > Editar</button>
                 <div>
 
                   {/*  Botón para BORRAR publicacion.*/}
@@ -62,16 +64,16 @@ export function UserGuitars() {
                  .then((data) => {
                  if (data.result === "ok") {
                  window.location.reload();}})}}}> 
-                 Delete</button>
+                 Borrar</button>
 
                      {/*  Botón para ir atrás.*/}
                  <button className="button1"onClick={()=>{
                 navigate("/dashboard", { replace: true })
-              }} > Back</button>
+              }} > Atras</button>
                   {/*  Botón para CREAR publicacion.*/}
                    <button className="button1"onClick={()=>{
                 navigate("/newguitar", { replace: true })
-              }} > New post</button>
+              }} > Crear</button>
               </div>
               </div>
                      
@@ -86,7 +88,7 @@ export function UserGuitars() {
       )}
       {user ? ( 
         <div>
-          <h2>All your Bass Guitars, {user.nombre}</h2>
+          <h2>Tus bajos, {user.nombre}</h2>
         <section className="seccion">
           {user.bassguitars.map((bass) => (
             <div className="publicaciones" key={bass.id}>
@@ -100,7 +102,7 @@ export function UserGuitars() {
                     {/*  Botón para EDITAR publicacion.*/}
               <button className="button1"onClick={()=>{
                 navigate(`/edituserbassguitars/${bass.id}`, { replace: true })
-              }} > Edit</button>
+              }} > Editar</button>
                 <div>
 
                   {/*  Botón para BORRAR publicacion.*/}
@@ -123,16 +125,16 @@ export function UserGuitars() {
                  .then((data) => {
                  if (data.result === "ok") {
                  window.location.reload();}})}}}> 
-                 Delete</button>
+                 Borrar</button>
 
                      {/*  Botón para ir atrás.*/}
                  <button className="button1"onClick={()=>{
                 navigate("/dashboard", { replace: true })
-              }} > Back</button>
+              }} > Atras</button>
                   {/*  Botón para CREAR publicacion.*/}
                    <button className="button1"onClick={()=>{
                 navigate("/newbassguitar", { replace: true })
-              }} > New post</button>
+              }} > Crear</button>
               </div>
               </div>
                      

@@ -1,55 +1,59 @@
-.dashboard {
-  width: 100%;
-  padding: 20px 0;
-}
-
-.dashTitulo {
-  padding: 10px 0;
-  text-align: center;
-  font-size: 2em;
-}
-
-.dashTitulo a {
-  color: #fff;
-  text-decoration: none;
-}
-.dashTitulo a:hover {
-  text-decoration: underline;
-}
-
-.dashSections {
+.box{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 800px;
-  width: 90%;
-  margin: 0 auto;
+  margin-bottom: 5.2rem;
 }
-.dashSections div {
-  width: 50%;
-  padding: 0 3%;
-  text-align: center;
+.welcome{
+  font-size: 1.8rem;
 }
-.dashSections div a {
-  color: #fff;
-  text-decoration: none;
-}
-.dashSections div img {
-    width: 100%;
-    height: auto;
-  object-fit: cover;
-  object-position: center;
-  aspect-ratio: 4/6;
-}
-
-.dashSections div h2 {
-  font-size: 2em;
-  color: #fff;
+.imgas img {
+  width: 100%;
+  height: auto;
+  margin-top: 3px;
+  border-radius: 3%;
 }
 .imgas{
-  width: 20%;
-  height: 1em;
+  width: 350px;
+  height: 380px;
 }
-.h1{
-  justify-content: center;
+.user{
+  /* width: 35%; */
+  margin: 10px 5%;
+  text-align: center;
+  color: black;
+  font-style: italic;
+  font-size: 25px;
+}
+.nombre{
+  font-size: 35px;
+  margin-bottom: 5%;
+}
+.boton{
+  width: 120px;
+  height: 70px;
+  border: 1px solid black;
+  font-weight: 600;
+  border-radius: 5%;
+  background: white;
+  text-decoration: none;
+}
+.boton1{
+  border: 1px solid black;
+  width: 120px;
+  height: 70px;
+  font-weight: 600;
+  padding: 15px;
+  border-radius: 5%;
+  background: white;
+  text-decoration: none;
+}
+.boton:hover {
+  font-weight: 700;
+    background: #e2a841;
+    transition: all 0.8s ease;
+}
+.boton1:hover {
+    background: #e2a841;
+    transition: all 0.8s ease;
 }

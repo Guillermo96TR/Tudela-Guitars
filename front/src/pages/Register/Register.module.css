@@ -84,7 +84,7 @@ label {
   margin-top: 15px;
   padding: 11px;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: black;
   border: 1px solid black;
   color: black;
 }
@@ -96,7 +96,7 @@ label {
 .links:hover {
   font-weight: 700;
   transition: all 0.5s ease;
-  background: #fff;
+  background: #e2a841;
 }
 
 @media only screen and (max-width: 768px) {

@@ -3,7 +3,7 @@ import style from "./Home.module.css"
 function Home() {
   return (
   <>
-  <h1>Welcome</h1>
+  <h1></h1>
     <div className={style.Home}>
             <div className={style.homephoto}>
         <img src="./images/pibe.jpg"></img>

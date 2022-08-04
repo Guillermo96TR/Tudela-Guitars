@@ -28,10 +28,10 @@ const Navbar = () => {
           </div>
           <div className={show ? "links active" : "links"}>
             <Link onClick={() => showSwitch()} to="/">
-              Home
+              Inicio
             </Link>
             <Link onClick={() => showSwitch()} to="/about">
-              About
+              Nosotros
             </Link>
             <Link onClick={() => showSwitch()} to="/guitars">
               Guitarras
@@ -40,10 +40,10 @@ const Navbar = () => {
               Bajos
             </Link>
             <Link onClick={() => showSwitch()} to="/contacto">
-              Contact
+              Contacto
             </Link>
             <Link onClick={() => showSwitch()} to="/login">
-              Login/Register
+              Logueo/Registro
             </Link>
           </div>
           <div
@@ -69,10 +69,10 @@ const Navbar = () => {
           </div>
           <div className={show ? "links active" : "links"}>
             <Link onClick={() => showSwitch()} to="/">
-              Home
+              Inicio
             </Link>
             <Link onClick={() => showSwitch()} to="/about">
-              About
+              Nosotros
             </Link>
             <Link onClick={() => showSwitch()} to="/guitars">
               Guitarras
@@ -81,10 +81,10 @@ const Navbar = () => {
               Bajos
             </Link>
             <Link onClick={() => showSwitch()} to="/contacto">
-              Contact
+              Contacto
             </Link>
             <Link onClick={() => showSwitch()} to="/dashboard">
-              Panel de control
+              Perfil
             </Link>
             <Link onClick={() => logout()} to="/">
               Logout

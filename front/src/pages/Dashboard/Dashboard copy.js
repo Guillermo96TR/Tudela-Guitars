@@ -30,10 +30,10 @@ const navigate = useNavigate();
               <div className={styles.imgas}><img  src={user.perfil} /></div>
               <button className={styles.boton} onClick={()=>{
                 navigate(`/edituser/${user.id}`, { replace: true })
-              }} > Cambiar datos</button></div>
+              }} > Modifica tus datos</button></div>
             <button className={styles.boton1} onClick={()=>{
                 navigate("/userguitars", { replace: true })
-              }} > Cambiar instrumentos  </button>
+              }} > Mis instrumentos</button>
         </div>
         </section>
         </div>
