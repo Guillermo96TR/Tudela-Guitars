@@ -1,5 +1,5 @@
 # Tudela Guitars #
-The perfect website to prepare your healthy meals!
+The perfect website to buy and sell instruments.
 I used : ReactJS, Mysql and symfony.
 
 ## Presentation ##
